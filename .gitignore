@@ -1,0 +1,19 @@
+# Bytecode and cache
+__pycache__/
+*.py[cod]
+
+# Environments
+*.env
+venv/
+phishsoc-env/
+
+# Logs and system
+*.log
+.DS_Store
+
+# Ignore model folder
+model/
+
+# Misc
+*.egg-info/
+*.checkpoint

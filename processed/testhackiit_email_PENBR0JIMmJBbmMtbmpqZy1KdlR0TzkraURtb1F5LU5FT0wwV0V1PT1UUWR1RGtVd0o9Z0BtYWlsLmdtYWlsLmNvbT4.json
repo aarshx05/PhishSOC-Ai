@@ -1,0 +1,83 @@
+{
+    "timestamp": "2025-02-17 04:38:48",
+    "phishing_result": {
+        "urgency_detected": true,
+        "structural_anomaly": true,
+        "phishing_score": 0.8504759252071381,
+        "overall_analysis": "Positive"
+    },
+    "bert_result": {
+        "subject": "poijhgcxqwdfghj",
+        "extracted_links": [
+            "https://www.google.com"
+        ],
+        "body_analysis": {
+            "summary": "HEyyy How are you im doing fine GHIIIIIII BYEEEEE next time https://www.google.com/ . this is Perfectly fine email . if you have any questions, please contact us at e-mail.com .",
+            "summary_classification": {
+                "label": "benign",
+                "score": 5.4001808166503906e-05
+            },
+            "chunk_analysis": [
+                {
+                    "text": "this is perfectly fine email. heyyy how are you im doing fine ghiiiiiii byeeeee next time https : / / www. google. com",
+                    "label": "phishing",
+                    "score": 0.9999487400054932
+                }
+            ],
+            "average_chunk_score": 0.9999487400054932,
+            "final_decision": "phishing"
+        }
+    },
+    "creen_result": [
+        {
+            "url": "https://www.google.com",
+            "screenshot_path": "static/ssout\\8ffdefbdec956b595d257f0aaeefd623\\screenshot.png",
+            "prediction": "web_site",
+            "confidence": 92.17959642410278,
+            "phishing_status": "This appears to be a legitimate site.",
+            "log_path": "static/ssout\\8ffdefbdec956b595d257f0aaeefd623\\results.txt"
+        }
+    ],
+    "threat_result": [
+        {
+            "url": "www.google.com",
+            "reputation": {
+                "OpenPhish": {
+                    "status": "not found",
+                    "details": "No record found."
+                },
+                "Abuse.ch": {
+                    "status": "clean",
+                    "details": "No threats detected."
+                },
+                "VirusTotal": {
+                    "status": "safe",
+                    "details": "No issues found."
+                },
+                "WHOIS": {
+                    "status": "success",
+                    "details": {
+                        "domain": "www.google.com",
+                        "registrar": "MarkMonitor, Inc.",
+                        "creation_date": "[datetime.datetime(1997, 9, 15, 4, 0), datetime.datetime(1997, 9, 15, 7, 0, tzinfo=datetime.timezone.utc)]",
+                        "expiration_date": "[datetime.datetime(2028, 9, 14, 4, 0), datetime.datetime(2028, 9, 13, 7, 0, tzinfo=datetime.timezone.utc)]",
+                        "name_servers": [
+                            "NS1.GOOGLE.COM",
+                            "NS2.GOOGLE.COM",
+                            "NS3.GOOGLE.COM",
+                            "NS4.GOOGLE.COM"
+                        ]
+                    }
+                },
+                "SSL Certificate": {
+                    "status": "secure",
+                    "details": {
+                        "issuer": "Google Trust Services",
+                        "valid_from": "Jan 27 08:37:16 2025 GMT",
+                        "valid_until": "Apr 21 08:37:15 2025 GMT"
+                    }
+                }
+            }
+        }
+    ]
+}

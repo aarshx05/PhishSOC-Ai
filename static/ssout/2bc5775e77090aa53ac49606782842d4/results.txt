@@ -1,0 +1,4 @@
+URL: https://accounts.google.com/AccountChooser?Email=hackiittest@gmail.com&continue=https://myaccount.google.com/signinoptions/two-step-verification?rfn%3D16%26rfnc%3D1%26eid%3D2037210007263871934%26et%3D1>
+Prediction: envelope (Confidence: 99.19%)
+Phishing Status: This appears to be a legitimate site.
+============================================================

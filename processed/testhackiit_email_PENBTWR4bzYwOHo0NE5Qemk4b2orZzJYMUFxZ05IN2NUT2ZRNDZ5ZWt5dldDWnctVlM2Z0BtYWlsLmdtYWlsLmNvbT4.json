@@ -1,0 +1,36 @@
+{
+    "timestamp": "2025-02-17 11:54:16",
+    "phishing_result": {
+        "urgency_detected": false,
+        "structural_anomaly": true,
+        "phishing_score": 0.3,
+        "overall_analysis": "Positive"
+    },
+    "bert_result": {
+        "subject": "This is a test mail",
+        "extracted_links": [],
+        "body_analysis": {
+            "summary": "hyper v memory also conatains same structuress . in wsl is that itnis inba process and innhyoer vs it isbstored spmehwere .",
+            "summary_classification": {
+                "label": "phishing",
+                "score": 0.9998103976249695
+            },
+            "chunk_analysis": [
+                {
+                    "text": "[ 07 / 01, 3 : 15 pm ] naman : hyper v memory also conatains same structuress [ 07 / 01, 3 : 16 pm ] naman : dofference is that in wsl is that itnis inba process and innhyoer vs it isbstored spmehwere [ 07 / 01, 3 : 18 pm ] naman : how to take ram dump of vmware [ 07 / 01, 3 : 18 pm ] naman : or such vm wilhivh as memory as process",
+                    "label": "benign",
+                    "score": 5.245208740234375e-06
+                }
+            ],
+            "average_chunk_score": 5.245208740234375e-06,
+            "final_decision": "not phishing"
+        }
+    },
+    "creen_result": [
+        {
+            "url": "",
+            "error": "Screenshot not saved"
+        }
+    ],
+    "threat_result": []
+}

@@ -1,0 +1,4 @@
+URL: https://accounts.google.com/AccountChooser?Email=testhackiit@gmail.com&continue=https://myaccount.google.com/alert/nt/1739734757404?rfn%3D259%26rfnc%3D1%26eid%3D-2987761532958441368%26et%3D0>
+Prediction: envelope (Confidence: 99.19%)
+Phishing Status: This appears to be a legitimate site.
+============================================================

@@ -1,0 +1,77 @@
+{
+    "timestamp": "2025-02-17 04:07:46",
+    "phishing_result": {
+        "urgency_detected": true,
+        "structural_anomaly": true,
+        "phishing_score": 1.1906474083662033,
+        "overall_analysis": "Negative"
+    },
+    "bert_result": {
+        "subject": "HiBro",
+        "extracted_links": [
+            "https://steri-cleanarkansas.com/f6pz"
+        ],
+        "body_analysis": {
+            "summary": "you are eligible for a *FREE international flight ticket* to any destination of your choice . this offer expires in the next 24 hours due to overwhelming demand . best Regards, *Global Travel Rewards Team* are a member of the international travel team .",
+            "summary_classification": {
+                "label": "phishing",
+                "score": 0.9999905824661255
+            },
+            "chunk_analysis": [
+                {
+                    "text": "* dear customer, * we are thrilled to announce an exclusive * one - time offer * just for you! as a valued customer, you are eligible for a * free international flight ticket * to any destination of your choice. to claim your ticket, simply verify your transaction through your bank using the link below : [UNK] * secure your free flight now * https : / / steri - cleanarkansas. com / f6pz once your transaction is verified, proceed to our official booking portal to reserve your flight : [UNK] * book your free flight here * for your convenience, we have attached the * flight schedule * so you can plan your trip accordingly. * hurry! this offer expires in the next 24 hours. * due to overwhelming demand, tickets are being claimed fast! best regards, * global travel rewards team *",
+                    "label": "phishing",
+                    "score": 0.9999940395355225
+                }
+            ],
+            "average_chunk_score": 0.9999940395355225,
+            "final_decision": "phishing"
+        }
+    },
+    "creen_result": [
+        {
+            "url": "https://steri-cleanarkansas.com/f6pz",
+            "screenshot_path": "static/ssout\\61720cefe1872b5112854e4ad98d6e93\\screenshot.png",
+            "prediction": "web_site",
+            "confidence": 72.60305285453796,
+            "phishing_status": "This appears to be a legitimate site.",
+            "log_path": "static/ssout\\61720cefe1872b5112854e4ad98d6e93\\results.txt"
+        }
+    ],
+    "threat_result": [
+        {
+            "url": "steri-cleanarkansas.com/f6pz",
+            "reputation": {
+                "OpenPhish": {
+                    "status": "not found",
+                    "details": "No record found."
+                },
+                "Abuse.ch": {
+                    "status": "clean",
+                    "details": "No threats detected."
+                },
+                "VirusTotal": {
+                    "status": "safe",
+                    "details": "No issues found."
+                },
+                "WHOIS": {
+                    "status": "success",
+                    "details": {
+                        "domain": "steri-cleanarkansas.com/f6pz",
+                        "registrar": "GoDaddy.com, LLC",
+                        "creation_date": "[datetime.datetime(2019, 4, 26, 16, 18, 31), datetime.datetime(2019, 4, 26, 11, 18, 31)]",
+                        "expiration_date": "[datetime.datetime(2025, 4, 26, 16, 18, 31), datetime.datetime(2025, 4, 26, 11, 18, 31)]",
+                        "name_servers": [
+                            "NS6.WIXDNS.NET",
+                            "NS7.WIXDNS.NET"
+                        ]
+                    }
+                },
+                "SSL Certificate": {
+                    "status": "error",
+                    "details": "DNS resolution failed (Domain may not exist)."
+                }
+            }
+        }
+    ]
+}

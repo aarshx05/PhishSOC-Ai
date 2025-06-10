@@ -1,0 +1,20 @@
+URL: https://myaccount.google.com/notifications
+Prediction: web_site (Confidence: 77.41%)
+Phishing Status: This appears to be a legitimate site.
+============================================================
+URL: https://myaccount.google.com/notifications
+Prediction: web_site (Confidence: 77.41%)
+Phishing Status: This appears to be a legitimate site.
+============================================================
+URL: https://myaccount.google.com/notifications
+Prediction: web_site (Confidence: 77.41%)
+Phishing Status: This appears to be a legitimate site.
+============================================================
+URL: https://myaccount.google.com/notifications
+Prediction: web_site (Confidence: 77.41%)
+Phishing Status: This appears to be a legitimate site.
+============================================================
+URL: https://myaccount.google.com/notifications
+Prediction: web_site (Confidence: 77.41%)
+Phishing Status: This appears to be a legitimate site.
+============================================================

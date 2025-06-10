@@ -1,0 +1,79 @@
+{
+    "timestamp": "2025-02-17 02:41:56",
+    "phishing_result": {
+        "urgency_detected": true,
+        "structural_anomaly": true,
+        "phishing_score": 1.1973347276449202,
+        "overall_analysis": "Negative"
+    },
+    "bert_result": {
+        "subject": "Welcome",
+        "extracted_links": [
+            "https://www.google.com/"
+        ],
+        "body_analysis": {
+            "summary": "you are eligible for a FREE international flight ticket to any destination of your choice . this offer expires in the next 24 hours due to overwhelming demand . if you are a valued customer, simply verify your transaction through your bank using the link below .",
+            "summary_classification": {
+                "label": "phishing",
+                "score": 0.9999945163726807
+            },
+            "chunk_analysis": [
+                {
+                    "text": "dear customer, we are thrilled to announce an exclusive one - time offer just for you! as a valued customer, you are eligible for a free international flight ticket to any destination of your choice. to claim your ticket, simply verify your transaction through your bank using the link below : [UNK] secure your free flight now https : / / www. google. com / once your transaction is verified, proceed to our official booking portal to reserve your flight : [UNK] book your free flight here for your convenience, we have attached the flight schedule so you can plan your trip accordingly. hurry! this offer expires in the next 24 hours. due to overwhelming demand, tickets are being claimed fast! best regards, global travel rewards team",
+                    "label": "phishing",
+                    "score": 0.9999943971633911
+                }
+            ],
+            "average_chunk_score": 0.9999943971633911,
+            "final_decision": "phishing"
+        }
+    },
+    "creen_result": [
+        {
+            "url": "https://www.google.com/",
+            "screenshot_path": "static/ssout\\d75277cdffef995a46ae59bdaef1db86\\screenshot.png",
+            "prediction": "web_site",
+            "confidence": 92.17959642410278,
+            "phishing_status": "This appears to be a legitimate site.",
+            "log_path": "static/ssout\\d75277cdffef995a46ae59bdaef1db86\\results.txt"
+        }
+    ],
+    "threat_result": [
+        {
+            "url": "www.google.com/",
+            "reputation": {
+                "OpenPhish": {
+                    "status": "not found",
+                    "details": "No record found."
+                },
+                "Abuse.ch": {
+                    "status": "clean",
+                    "details": "No threats detected."
+                },
+                "VirusTotal": {
+                    "status": "safe",
+                    "details": "No issues found."
+                },
+                "WHOIS": {
+                    "status": "success",
+                    "details": {
+                        "domain": "www.google.com/",
+                        "registrar": "MarkMonitor, Inc.",
+                        "creation_date": "[datetime.datetime(1997, 9, 15, 4, 0), datetime.datetime(1997, 9, 15, 7, 0, tzinfo=datetime.timezone.utc)]",
+                        "expiration_date": "[datetime.datetime(2028, 9, 14, 4, 0), datetime.datetime(2028, 9, 13, 7, 0, tzinfo=datetime.timezone.utc)]",
+                        "name_servers": [
+                            "NS1.GOOGLE.COM",
+                            "NS2.GOOGLE.COM",
+                            "NS3.GOOGLE.COM",
+                            "NS4.GOOGLE.COM"
+                        ]
+                    }
+                },
+                "SSL Certificate": {
+                    "status": "error",
+                    "details": "DNS resolution failed (Domain may not exist)."
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,79 @@
+{
+    "timestamp": "2025-02-17 04:07:00",
+    "phishing_result": {
+        "urgency_detected": true,
+        "structural_anomaly": true,
+        "phishing_score": 0.8369185388088225,
+        "overall_analysis": "Positive"
+    },
+    "bert_result": {
+        "subject": "8",
+        "extracted_links": [
+            "https://www.google.com/"
+        ],
+        "body_analysis": {
+            "summary": "we need to get it done as soon as possible . if not, please try to complete it soon and forward it to me once you're done . we can go over it together if you need any help or have any doubts .",
+            "summary_classification": {
+                "label": "benign",
+                "score": 7.510185241699219e-06
+            },
+            "chunk_analysis": [
+                {
+                    "text": "hey aarsh, hope you \u2019 re doing well! i just wanted to remind you about the assignment \u2014 we need to get it done as soon as possible. if you \u2019 ve already started working on it, let me know how it \u2019 s going. if not, please try to complete it soon and forward it to me once you \u2019 re done. if you need any help or have any doubts, feel free to ask. we can go over it together if needed. i \u2019 d really appreciate it if you could send it to me once it's finished so i can review it as well. visit : https : / / www. google. com / let me know if you need any extra time or if there \u2019 s anything else we should discuss. looking forward to your response. thanks a lot! [ your name ]",
+                    "label": "benign",
+                    "score": 1.2278556823730469e-05
+                }
+            ],
+            "average_chunk_score": 1.2278556823730469e-05,
+            "final_decision": "not phishing"
+        }
+    },
+    "creen_result": [
+        {
+            "url": "https://www.google.com/",
+            "screenshot_path": "static/ssout\\d75277cdffef995a46ae59bdaef1db86\\screenshot.png",
+            "prediction": "web_site",
+            "confidence": 92.17959642410278,
+            "phishing_status": "This appears to be a legitimate site.",
+            "log_path": "static/ssout\\d75277cdffef995a46ae59bdaef1db86\\results.txt"
+        }
+    ],
+    "threat_result": [
+        {
+            "url": "www.google.com/",
+            "reputation": {
+                "OpenPhish": {
+                    "status": "not found",
+                    "details": "No record found."
+                },
+                "Abuse.ch": {
+                    "status": "clean",
+                    "details": "No threats detected."
+                },
+                "VirusTotal": {
+                    "status": "safe",
+                    "details": "No issues found."
+                },
+                "WHOIS": {
+                    "status": "success",
+                    "details": {
+                        "domain": "www.google.com/",
+                        "registrar": "MarkMonitor, Inc.",
+                        "creation_date": "[datetime.datetime(1997, 9, 15, 4, 0), datetime.datetime(1997, 9, 15, 7, 0, tzinfo=datetime.timezone.utc)]",
+                        "expiration_date": "[datetime.datetime(2028, 9, 14, 4, 0), datetime.datetime(2028, 9, 13, 7, 0, tzinfo=datetime.timezone.utc)]",
+                        "name_servers": [
+                            "NS1.GOOGLE.COM",
+                            "NS2.GOOGLE.COM",
+                            "NS3.GOOGLE.COM",
+                            "NS4.GOOGLE.COM"
+                        ]
+                    }
+                },
+                "SSL Certificate": {
+                    "status": "error",
+                    "details": "DNS resolution failed (Domain may not exist)."
+                }
+            }
+        }
+    ]
+}

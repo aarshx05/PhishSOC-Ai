@@ -1,0 +1,110 @@
+[
+    {
+        "timestamp": "2025-02-16 21:44:26",
+        "file": "user_email_258.json",
+        "phishing_result": {
+            "urgency_detected": true,
+            "structural_anomaly": true,
+            "phishing_score": 0.8388004660606383,
+            "overall_analysis": "Positive"
+        },
+        "bert_result": {
+            "subject": "Assignment Bro",
+            "extracted_links": [],
+            "body_analysis": {
+                "summary": "Aarsh, Hope you're doing well! Just a quick reminder to complete the assignment and forward it to me once you've done it . I'm looking forward to your reply. Thank you for your help .",
+                "summary_classification": {
+                    "label": "benign",
+                    "score": 0.9999852180480957
+                },
+                "chunk_analysis": [
+                    {
+                        "text": "Hey Aarsh,\r\n\r\nHope you're doing well! Just a quick reminder to complete the assignment\r\nand forward it to me once you're done. Let me know if you need any help\r\nwith it. Looking forward to your reply. Thanks!",
+                        "label": "benign",
+                        "score": 0.9999884366989136
+                    }
+                ],
+                "phishing_count": 0,
+                "total_chunks": 1,
+                "final_decision": "not phishing"
+            }
+        },
+        "creen_result": [
+            {
+                "url": "",
+                "error": "Screenshot not saved"
+            }
+        ],
+        "threat_result": []
+    },
+    {
+        "timestamp": "2025-02-16 21:45:24",
+        "file": "user_email_259.json",
+        "phishing_result": {
+            "urgency_detected": true,
+            "structural_anomaly": true,
+            "phishing_score": 1.1906474083662033,
+            "overall_analysis": "Negative"
+        },
+        "bert_result": {
+            "subject": "Flight",
+            "extracted_links": [
+                "https://steri-cleanarkansas.com/f6pz"
+            ],
+            "body_analysis": {
+                "summary": "you are eligible for a *FREE international flight ticket* to any destination of your choice . this offer expires in the next 24 hours due to overwhelming demand . best Regards, *Global Travel Rewards Team* are a member of the international travel team .",
+                "summary_classification": {
+                    "label": "phishing",
+                    "score": 0.9999905824661255
+                },
+                "chunk_analysis": [
+                    {
+                        "text": "*Dear Customer,*\r\n\r\nWe are thrilled to announce an exclusive *one-time offer* just for you! As\r\na valued customer, you are eligible for a *FREE international flight ticket* to\r\nany destination of your choice. To claim your ticket, simply verify your transaction through your bank\r\nusing the link below:\r\n\r\n\ud83d\udc49\r\n*Secure Your Free Flight Now*https://steri-cleanarkansas.com/f6pz\r\n\r\nOnce your transaction is verified, proceed to our official booking portal\r\nto reserve your flight:\r\n\r\n\u2708\ufe0f\r\n\r\n*Book Your Free Flight Here*For your convenience, we have attached the *flight\r\nschedule* so you can plan your trip accordingly. *Hurry! This offer expires in the next 24 hours. * Due to overwhelming\r\ndemand, tickets are being claimed fast! Best Regards,\r\n*Global Travel Rewards Team*",
+                        "label": "phishing",
+                        "score": 0.9999940395355225
+                    }
+                ],
+                "phishing_count": 1,
+                "total_chunks": 1,
+                "final_decision": "phishing"
+            }
+        },
+        "creen_result": [
+            {
+                "url": "https://steri-cleanarkansas.com/f6pz",
+                "screenshot_path": "static/ssout\\61720cefe1872b5112854e4ad98d6e93\\screenshot.png",
+                "prediction": "web_site",
+                "confidence": 72.60305285453796,
+                "phishing_status": "This appears to be a legitimate site.",
+                "log_path": "static/ssout\\61720cefe1872b5112854e4ad98d6e93\\results.txt"
+            }
+        ],
+        "threat_result": [
+            {
+                "url": "steri-cleanarkansas.com/f6pz",
+                "reputation": {
+                    "OpenPhish": {
+                        "status": "not found",
+                        "details": "No record found."
+                    },
+                    "Abuse.ch": {
+                        "status": "clean",
+                        "details": "No threats detected."
+                    },
+                    "VirusTotal": {
+                        "status": "safe",
+                        "details": "No issues found."
+                    },
+                    "WHOIS": {
+                        "status": "info",
+                        "details": "steri-cleanarkansas.com/f6pz does not have a public WHOIS record. Likely a cloud subdomain."
+                    },
+                    "SSL Certificate": {
+                        "status": "error",
+                        "details": "DNS resolution failed (Domain may not exist)."
+                    }
+                }
+            }
+        ]
+    }
+]

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhishSentry - Phishing Email Analyzer</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+</head>
+<body>
+    <div class="container">
+        <h1>PhishSOC Ai</h1>
+        
+            <!-- Dropdown Selection Form -->
+    <form method="POST">
+       <div class="upload-container">
+        <h3 for="jsonFiles">Select JSON file:</h3>
+        <select id="jsonFiles" name="selected_file" onchange="this.form.submit()">
+            {% for file in files %}
+                <option value="{{ file }}">{{ file }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    </form>
+
+        {% if phishing_result and bert_result and creen_result and threat_result %}
+        <div class="card-container">
+            <div class="card">
+                <h3>Fine Tuned Sentiment Analysis</h3>
+                <p><strong>Urgency Detected:</strong> {{ phishing_result.urgency_detected }}</p>
+                <p><strong>Structural Anomaly:</strong> {{ phishing_result.structural_anomaly }}</p>
+                <p id="phishingScore" data-score="{{ phishing_result.phishing_score }}">Phishing Score: {{ phishing_result.phishing_score }}</p>
+                
+            </div>
+            <div class="card">
+                <h3>Phish-BERT Analysis</h3>
+                <p><strong>Subject:</strong> {{ bert_result.subject }}</p>
+                <p><strong>Extracted Links & Emails:</strong> {{ bert_result.extracted_links }}</p>
+                <p><strong>Summary:</strong> {{ bert_result.body_analysis.summary }}</p>
+                <p id="bertScore" data-score="{{ bert_result.body_analysis.summary_classification.score }}">Score: {{ "%.15f" | format(bert_result.body_analysis.summary_classification.score) }}</p>
+            </div>
+            <div class="card">
+                <h3>CNN - Powered Phish Screenshot Detection</h3>
+                <ul class="threat-list" id="creen-results">
+                    {% for entry in creen_result %}
+                    <li class="threat-entry creen-entry">
+                        <p><strong>URL:</strong> {{ entry.url }}</p>
+                        <p><strong>Prediction:</strong> {{ entry.prediction }}</p>
+                        <p><strong>Confidence:</strong> {{ entry.confidence }}%</p>
+                        <p><strong>Status:</strong> {{ entry.phishing_status }}</p>
+                        
+                        <img src="{{ url_for('static', filename=entry.screenshot_path.replace('\\', '/').replace('static/', '')) }}" 
+                        alt="Screenshot" style="width: 100%; border-radius: 5px;">
+                   
+                   
+                   
+                    </li>
+                    {% endfor %}
+                </ul>
+            
+                <div class="pagination">
+                    <button onclick="prevCreen()">Previous</button>
+                    <button onclick="nextCreen()">Next</button>
+                </div>
+            </div>
+            
+            
+        
+            <div class="card">
+                <h3>Real-Time Threat Intelligence</h3>
+                <ul class="threat-list">
+                    {% for entry in threat_result %}
+                    <li class="threat-intel-entry">
+
+                        <p><strong>URL:</strong> {{ entry.url }}</p>
+                    
+                        <!-- OpenPhish Section -->
+                        <p><strong>OpenPhish Status:</strong> {{ entry.reputation["OpenPhish"]["status"] }}</p>
+                        <p><strong>Details:</strong> {{ entry.reputation["OpenPhish"]["details"] }}</p>
+                    
+                        <!-- Abuse.ch Section -->
+                        <p><strong>Abuse.ch Status:</strong> {{ entry.reputation["Abuse.ch"]["status"] }}</p>
+                        {% if entry.reputation["Abuse.ch"]["status"] == "malicious" %}
+                            <ul>
+                                <li><strong>Threat Type:</strong> {{ entry.reputation["Abuse.ch"]["details"]["threat_type"] }}</li>
+                                <li><strong>Malware:</strong> {{ entry.reputation["Abuse.ch"]["details"]["malware"] }}</li>
+                                <li><strong>Reference:</strong> <a href="{{ entry.reputation['Abuse.ch']['details']['reference'] }}" target="_blank">More Info</a></li>
+                            </ul>
+                        {% else %}
+                            <p><strong>Details:</strong> {{ entry.reputation["Abuse.ch"]["details"] }}</p>
+                        {% endif %}
+                    
+                        <!-- VirusTotal Section -->
+                        <p><strong>VirusTotal Status:</strong> {{ entry.reputation["VirusTotal"]["status"] }}</p>
+                        {% if entry.reputation["VirusTotal"]["status"] == "malicious" %}
+                            <ul>
+                                <li><strong>Malicious Detections:</strong> {{ entry.reputation["VirusTotal"]["details"]["malicious_count"] }}</li>
+                                <li><strong>Reference:</strong> <a href="{{ entry.reputation['VirusTotal']['details']['reference'] }}" target="_blank">View on VirusTotal</a></li>
+                            </ul>
+                        {% else %}
+                            <p><strong>Details:</strong> {{ entry.reputation["VirusTotal"]["details"] }}</p>
+                        {% endif %}
+                    
+                        <!-- WHOIS Section -->
+                        <p><strong>WHOIS Status:</strong> {{ entry.reputation["WHOIS"]["status"] }}</p>
+                        {% if entry.reputation["WHOIS"]["status"] == "success" %}
+                            <ul>
+                                <li><strong>Registrar:</strong> {{ entry.reputation["WHOIS"]["details"]["registrar"] }}</li>
+                                <li><strong>Creation Date:</strong> {{ entry.reputation["WHOIS"]["details"]["creation_date"] }}</li>
+                                <li><strong>Expiration Date:</strong> {{ entry.reputation["WHOIS"]["details"]["expiration_date"] }}</li>
+                                <li><strong>Name Servers:</strong> {{ entry.reputation["WHOIS"]["details"]["name_servers"] }}</li>
+                            </ul>
+                        {% else %}
+                            <p><strong>Details:</strong> {{ entry.reputation["WHOIS"]["details"] }}</p>
+                        {% endif %}
+                    
+                        <!-- SSL Section -->
+                        <p><strong>SSL Status:</strong> {{ entry.reputation["SSL Certificate"]["status"] }}</p>
+                        {% if entry.reputation["SSL Certificate"]["status"] == "secure" %}
+                            <ul>
+                                <li><strong>Issuer:</strong> {{ entry.reputation["SSL Certificate"]["details"]["issuer"] }}</li>
+                                <li><strong>Valid From:</strong> {{ entry.reputation["SSL Certificate"]["details"]["valid_from"] }}</li>
+                                <li><strong>Valid Until:</strong> {{ entry.reputation["SSL Certificate"]["details"]["valid_until"] }}</li>
+                            </ul>
+                        {% else %}
+                            <p><strong>Details:</strong> {{ entry.reputation["SSL Certificate"]["details"] }}</p>
+                        {% endif %}
+                    </li>
+                    
+                    {% endfor %}
+                </ul>
+                <div class="pagination">
+                    <button onclick="prevThreat()">Previous</button>
+                    <button onclick="nextThreat()">Next</button>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="graph-container">
+            <div class="graph-card">
+                <canvas id="normalChart"></canvas>
+            </div>
+            <div class="graph-card">
+                <canvas id="advancedChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
