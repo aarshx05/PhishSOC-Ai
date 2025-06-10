@@ -1,153 +1,118 @@
-```markdown
-# 🛡️ PhishSOC-Ai — Phishing Detection & SOC Integration Suite
+# 🛡️ PhishSOC-AI – AI-Powered Phishing Detection & SOC Integration Suite  
 
-PhishSOC-Ai is a comprehensive AI-powered phishing detection system designed for use in **Security Operations Centers (SOCs)**. It combines **screenshot analysis**, **email sentiment classification**, **threat intelligence enrichment**, and **real-time Splunk integration** to generate a **compounded phishing threat score**.
-
----
-
-## 🧠 What It Does
-
-PhishSOC-Ai automates the triage and analysis of suspected phishing emails with custom-trained models and intelligent logic across multiple layers of inspection:
-
-- ✅ **Email content analysis** via NLP transformers  
-- 🧾 **Threat intelligence** based on domains, IPs, and URLs  
-- 😠 **Sentiment detection** to assess urgency or manipulation  
-- 📷 **Screenshot processing** to detect visual phishing tricks  
-- 📡 **Real-time data forwarding to Splunk**  
-- 📊 **Unified phishing score** shown on a local dashboard
+**PhishSOC-AI** is an advanced, AI-driven phishing detection platform designed for **Security Operations Centers (SOC)**. It automates phishing email analysis through multi-layered inspection—combining **NLP-based sentiment classification**, **threat intelligence enrichment**, **screenshot forensics**, and **real-time Splunk integration**—to generate a consolidated **phishing threat score**.  
 
 ---
 
-## 🗂️ Project Structure
+## ✨ Key Features  
 
-```
-
-PhishSOC-Ai/
-├── app.py                  # Web dashboard and main orchestration
-├── analyze.py              # Full analysis logic
-├── sentiment.py            # NLP sentiment/phishing classification
-├── emails/
-│   └── new\_mtp.py          # Email fetching and parsing
-├── splunk.py               # Integration with Splunk
-├── model/                  # 🔒 Custom ML models (excluded)
-├── requirements.txt        # Python dependencies
-├── README.md
-└── .gitignore
-
-````
+| Feature                      | Description                                                                 |
+|------------------------------|-----------------------------------------------------------------------------|
+| **📧 Email Content Analysis** | NLP transformers detect phishing cues (e.g., urgency, impersonation).      |
+| **🔍 Threat Intelligence**   | Enriches domains/IPs/URLs with threat feeds (e.g., VirusTotal, AbuseIPDB). |
+| **😠 Sentiment Detection**   | Identifies manipulative language (e.g., "Urgent action required!").        |
+| **📸 Screenshot Analysis**   | Custom CV models detect visual phishing (fake login pages, brand spoofing).|
+| **📊 Splunk Integration**    | Forwards structured alerts to Splunk via HEC for SOC workflows.            |
+| **📈 Unified Dashboard**     | Local Flask UI displays threat scores, analysis metadata, and trends.      |
 
 ---
 
-## 🚀 Quick Start Guide
-
-### 1. Clone the Repository
+## 🏗️ Project Architecture  
 
 ```bash
-git clone https://github.com/aarshx05/PhishSOC-Ai.git
-cd PhishSOC-Ai
-````
-
-### 2. Setup Virtual Environment (Recommended)
-
-Using Conda:
-
-```bash
-conda create -n phishsoc-env python=3.10
-conda activate phishsoc-env
+PhishSOC-AI/
+├── app/                      # Flask dashboard and API endpoints
+│   ├── static/               # JS/CSS assets
+│   └── templates/            # HTML frontend
+├── core/                     # Analysis modules
+│   ├── analyzer.py           # Orchestrates scoring pipeline
+│   ├── sentiment.py          # NLP phishing classifier (BERT/RoBERTa)
+│   └── screenshot_ai.py      # OpenCV/TensorFlow visual detection
+├── integrations/
+│   ├── splunk_hec.py         # Splunk HEC event forwarding
+│   └── email_parser.py       # MIME/EML parsing (Exchange/IMAP)
+├── model/                    # Custom-trained ML models (⚠️ excluded)
+├── tests/                    # Unit/integration tests
+├── requirements.txt          # Python dependencies
+└── config.yaml               # API keys, Splunk HEC, model paths
 ```
 
-Or using `venv`:
+---
 
+## 🚀 Deployment Guide  
+
+### Prerequisites  
+- Python 3.10+  
+- Splunk HEC (for integration)  
+- GPU recommended for screenshot analysis  
+
+### 1. Clone & Setup  
 ```bash
-python -m venv phishsoc-env
-phishsoc-env\Scripts\activate   # On Windows
-```
-
-### 3. Install Required Packages
-
-```bash
+git clone https://github.com/aarshx05/PhishSOC-AI.git
+cd PhishSOC-AI
+python -m venv venv && source venv/bin/activate  # Linux/macOS
 pip install -r requirements.txt
 ```
 
----
+### 2. Configure Secrets  
+Edit `config.yaml`:  
+```yaml
+splunk:
+  hec_url: "https://your-splunk:8088"
+  hec_token: "xxxx-xxxx"  
+threat_intel:
+  virustotal_api_key: "YOUR_VT_KEY"
+```
 
-## 📁 Model Folder Access
+### 3. Request Model Access  
+Email **[aarsh.chaurasia.201007@gmail.com](mailto:aarsh.chaurasia.201007@gmail.com)** with subject:  
+`PhishSOC-AI Model Access Request`  
+Place downloaded models in `/model/`.  
 
-The `model/` directory includes **custom-tuned models** for phishing detection and screenshot analysis. Due to size and licensing restrictions, it is **not included in this repository**.
-
-📥 To get access, please send an email to:
-
-> **[aarsh.chaurasia.201007@gmail.com](mailto:aarsh.chaurasia.201007@gmail.com)**
-> Subject: `Request: PhishSOC-Ai model folder`
-
-Once you receive the archive:
-
-1. Extract it to the project root (so it creates `PhishSOC-Ai/model/`)
-2. Ensure model paths are preserved as expected.
-
----
-
-## 🧪 Running the System
-
-After setting everything up:
-
+### 4. Launch  
 ```bash
-python app.py             # Launches the dashboard
-python emails/new_mtp.py  # Parses emails and saves metadata
-python splunk.py          # Sends events to Splunk
-python analyze.py         # Core phishing analysis pipeline
-```
-
-Then open your browser at:
-**`http://localhost:5000/`**
-
----
-
-## 📷 Screenshot / Analysis Flow
-
-> 
-![image](https://github.com/user-attachments/assets/046bec6f-b466-4258-9a39-f798ed054aed)
-![image](https://github.com/user-attachments/assets/8fdb3b17-6188-4116-981c-88ab835232ec)
-
----
-
-## 🔗 Splunk Integration
-
-PhishSOC-Ai supports forwarding parsed and scored phishing events to **Splunk Enterprise or Splunk Cloud** using HTTP Event Collector (HEC). Modify the `splunk.py` file to include your Splunk HEC token and URL:
-
-```python
-SPLUNK_HEC_URL = 'https://your-splunk-instance:8088'
-SPLUNK_TOKEN = 'Your_HEC_Token'
+flask run --host=0.0.0.0  # Starts dashboard (http://localhost:5000)
+python core/analyzer.py   # Runs analysis pipeline
 ```
 
 ---
 
-## 🛠 Dependencies
-
-Key Python packages used:
-
-* `transformers` (HuggingFace)
-* `scikit-learn`, `pandas`, `numpy`
-* `opencv-python`, `Pillow`
-* `flask`, `requests`
-* `tensorflow` or `torch` (depending on your model backend)
-* `splunk-sdk` (for integration)
-
----
-
-## 📄 License
-
-This project is for **educational and research purposes only**. Commercial or malicious use is strictly prohibited.
-
----
-
-## 🤝 Contributions
-
-Pull requests and improvements are welcome.
-Just open an issue or fork the project!
-
----
-
+## 🔌 Splunk Integration  
+![Splunk Dashboard Example](https://github.com/user-attachments/assets/8fdb3b17-6188-4116-981c-88ab835232ec)  
+Events are forwarded as JSON:  
+```json
+{
+  "threat_score": 0.92,
+  "sender_ip": "185.143.223.1", 
+  "indicators": ["fake-login.microsoft.com"],
+  "sentiment": "high_urgency"
+}
 ```
 
 ---
+
+## 🛠️ Tech Stack  
+- **ML/NLP**: HuggingFace Transformers, TensorFlow/Keras  
+- **Computer Vision**: OpenCV, Pillow  
+- **Backend**: Flask, Python 3.10  
+- **Threat Intel**: VirusTotal, AbuseIPDB APIs  
+- **SOC Integration**: Splunk HEC  
+
+---
+
+## 📜 License  
+**Research/Educational Use Only** – Commercial use prohibited.  
+
+---
+
+## 📬 Contact  
+For contributions or issues:  
+- **Email**: [aarsh.chaurasia.201007@gmail.com](mailto:aarsh.chaurasia.201007@gmail.com)  
+- **GitHub Issues**: [https://github.com/aarshx05/PhishSOC-AI/issues](https://github.com/aarshx05/PhishSOC-AI/issues)  
+
+---
+
+### ✨ Contributors Welcome!  
+Submit PRs or open discussions for feature requests.  
+
+--- 
