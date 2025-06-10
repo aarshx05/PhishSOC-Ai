@@ -71,8 +71,10 @@ Place downloaded models in `/model/`.
 
 ### 4. Launch  
 ```bash
-flask run --host=0.0.0.0  # Starts dashboard (http://localhost:5000)
-python core/analyzer.py   # Runs analysis pipeline
+python app.py             # Launches the dashboard
+python emails/new_mtp.py  # Parses emails and saves metadata
+python splunk.py          # Sends events to Splunk
+python analyze.py         # Core phishing analysis pipeline
 ```
 
 ---
